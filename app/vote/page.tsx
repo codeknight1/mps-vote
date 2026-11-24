@@ -353,16 +353,14 @@ export default function VotePage() {
               </div>
               <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">Your Vote is Recorded!</h3>
               <p className="text-muted-foreground mb-2">Thank you for voting in the MPS Media Poetry Challenge</p>
-              <p className="text-sm text-muted-foreground mb-8">
-                This code has completed its voting. To vote again, purchase another voting code.
-              </p>
+              <p className="text-sm text-muted-foreground mb-8">This code has completed its voting.</p>
               <div className="space-y-4">
                 <Link href="/">
                   <Button
                     className="w-full bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:shadow-primary/20"
                     size="lg"
                   >
-                    Purchase Another Ticket
+                    Back to Home
                   </Button>
                 </Link>
               </div>
