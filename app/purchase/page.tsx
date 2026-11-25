@@ -110,6 +110,7 @@ export default function PurchasePage() {
               <label className="block text-sm font-semibold text-foreground mb-3">Email Address</label>
               <Input
                 type="email"
+                required
                 placeholder="your@email.com"
                 value={email}
                 onChange={(e) => {
@@ -124,9 +125,11 @@ export default function PurchasePage() {
 
             {/* Phone — how we reach you if there's a problem with your code */}
             <div>
+              <label className="block text-sm font-semibold text-foreground mb-3">Phone Number</label>
               <Input
                 type="tel"
                 inputMode="tel"
+                required
                 placeholder="080 1234 5678"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
@@ -134,7 +137,7 @@ export default function PurchasePage() {
                 className="bg-input border-border/40 text-foreground placeholder:text-muted-foreground focus:border-primary/50 transition-colors"
               />
               <p className="text-xs text-muted-foreground mt-2">
-                So we can reach you if there&apos;s any problem with your voting code
+                Required — so we can reach you if there&apos;s any problem with your voting code
               </p>
             </div>
 
@@ -184,6 +187,53 @@ export default function PurchasePage() {
             <p className="text-xs text-muted-foreground text-center">
               Secure payment powered by Paystack. Your payment information is encrypted and secure.
             </p>
+          </CardContent>
+        </Card>
+
+        {/* Voting instructions — placed here because the liability note about
+            incorrect email addresses belongs where the buyer enters theirs. */}
+        <Card className="bg-white border-border/40 backdrop-blur shadow-lg mt-8">
+          <CardHeader>
+            <CardTitle className="text-foreground">VOTING INSTRUCTIONS</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ol className="space-y-4">
+              {[
+                {
+                  title: "Check Your Email",
+                  body: "After purchasing your voting ticket, check the email address you provided for your unique voting access code.",
+                },
+                {
+                  title: "Return to the Website",
+                  body: "Visit the voting website again to continue the voting process.",
+                },
+                {
+                  title: "Enter Your Access Code",
+                  body: "Enter the unique code sent to your email address to gain access to the voting platform.",
+                },
+                {
+                  title: "Use a Valid Email Address",
+                  body: "Ensure that the email address provided during ticket purchase is correct and accessible. MPS Media will not be responsible for incorrect email addresses or failure to receive access codes due to incorrect information.",
+                },
+              ].map((step, index) => (
+                <li key={step.title} className="flex gap-3">
+                  <span className="flex-shrink-0 w-7 h-7 rounded-full bg-gradient-to-br from-primary to-accent text-primary-foreground text-sm font-bold flex items-center justify-center">
+                    {index + 1}
+                  </span>
+                  <div className="min-w-0">
+                    <p className="font-semibold text-foreground">{step.title}</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{step.body}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+
+            <div className="mt-6 rounded-lg border-l-4 border-primary bg-primary/5 p-4">
+              <p className="text-sm text-foreground">
+                <strong>Please Note:</strong> Only voters with valid purchased tickets and access codes
+                will be able to proceed with voting.
+              </p>
+            </div>
           </CardContent>
         </Card>
       </div>
